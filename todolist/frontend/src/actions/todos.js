@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_TODOS, DELETE_TODO } from "./types";
+import { GET_TODOS, DELETE_TODO, ADD_TODO } from "./types";
 
 //GET TODOS
 export const getTodos = () => dispatch => {
@@ -28,4 +28,17 @@ export const deleteTodo = id => dispatch => {
         })
         .catch(err => console.log(err));
     console.log(response.data);
+};
+
+//POST TODO
+export const addTodo = todo => dispatch => {
+    axios
+        .post("/api/todos/", todo)
+        .then(res => {
+            dispatch({
+                type: ADD_TODO,
+                payload: res.data
+            });
+        })
+        .catch(err => console.log(err));
 };

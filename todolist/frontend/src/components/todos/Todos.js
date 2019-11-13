@@ -22,12 +22,14 @@ export class Todos extends Component {
                 <h2>Yapılacaklar </h2>
                 <table className="table table-striped">
                     <thead>
-                        <th>Id</th>
-                        <th>Başlık</th>
-                        <th>Açıklama</th>
-                        <th>Tamamlanma</th>
-                        <th>Tarih</th>
-                        <th />
+                        <tr>
+                            <th>Id</th>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Tamamlanma</th>
+                            <th>Tarih</th>
+                            <th />
+                        </tr>
                     </thead>
                     <tbody>
                         {this.props.todos.map(todo => (
