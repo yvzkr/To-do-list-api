@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 export class Form extends Component {
+    state = {
+        title: '',
+        description: ''
+
+    }
     render() {
         return (
             <div>
