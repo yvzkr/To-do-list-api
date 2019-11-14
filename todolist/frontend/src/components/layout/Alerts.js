@@ -12,8 +12,10 @@ export class Alerts extends Component {
     componentDidUpdate(prevProps) {
         const { error, alert } = this.props;
         if (error !== prevProps.error) {
-            {/*this.props.alert.show("prevProps.error");*/ }
-            alert.error("this is error");
+            {/*this.props.alert.show("prevProps.error");
+            alert.error("this is error");*/ }
+            if (error.msg.title) alert.error("Başlık giriniz");
+            if (error.msg.description) alert.error(" Açıklama eklemeyi unutmayın");
 
         }
     }
