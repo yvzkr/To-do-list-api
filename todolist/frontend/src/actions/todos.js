@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_TODOS, DELETE_TODO, ADD_TODO } from "./types";
+import { GET_TODOS, DELETE_TODO, ADD_TODO, GET_ERRORS } from "./types";
 
 //GET TODOS
 export const getTodos = () => dispatch => {
@@ -30,7 +30,7 @@ export const deleteTodo = id => dispatch => {
     console.log(response.data);
 };
 
-//POST TODO
+//Add TODO
 export const addTodo = todo => dispatch => {
     axios
         .post("/api/todos/", todo)
@@ -40,5 +40,14 @@ export const addTodo = todo => dispatch => {
                 payload: res.data
             });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            const errors = {
+                msg: err.response.data,
+                status: err.response.status
+            };
+            dispatch({
+                type: GET_ERRORS,
+                payload: errors
+            });
+        });
 };
