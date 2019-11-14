@@ -22,6 +22,10 @@ export class Form extends Component {
         const { title, description } = this.state;
         const todo = { title, description };
         this.props.addTodo(todo);
+        this.setState({
+            title: "",
+            description: ""
+        });
     };
 
 
