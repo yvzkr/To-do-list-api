@@ -18,8 +18,6 @@ export class Header extends Component {
                             <li className="nav-item">
                                 <Link to="/login" className="nav-link">Giriş</Link>
                             </li>
-
-
                         </ul>
                     </div>
                 </div>
