@@ -22,6 +22,7 @@ export class Alerts extends Component {
 
         if (message !== prevProps.message) {
             if (message.deleteTodo) alert.success(message.deleteTodo);
+            if (message.addTodo) alert.success(message.addTodo);
 
         }
 

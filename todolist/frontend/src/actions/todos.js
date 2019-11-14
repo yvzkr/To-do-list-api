@@ -22,7 +22,7 @@ export const deleteTodo = id => dispatch => {
     axios
         .delete(`/api/todos/${id}/`)
         .then(res => {
-            dispatch(createMessage({ deleteTodo: "Todo Deleted" }));
+            dispatch(createMessage({ deleteTodo: "İş Silindi" }));
             dispatch({
                 type: DELETE_TODO,
                 payload: id
@@ -36,6 +36,7 @@ export const addTodo = todo => dispatch => {
     axios
         .post("/api/todos/", todo)
         .then(res => {
+            dispatch(createMessage({ addTodo: "İş eklendi" }));
             dispatch({
                 type: ADD_TODO,
                 payload: res.data
