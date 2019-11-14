@@ -1,7 +1,7 @@
 import axios from "axios";
-import { createMessage } from "./messages";
+import { createMessage, returnErrors } from "./messages";
 
-import { GET_TODOS, DELETE_TODO, ADD_TODO, GET_ERRORS } from "./types";
+import { GET_TODOS, DELETE_TODO, ADD_TODO } from "./types";
 
 //GET TODOS
 export const getTodos = () => dispatch => {
@@ -13,7 +13,9 @@ export const getTodos = () => dispatch => {
                 payload: res.data
             });
         })
-        .catch(err => console.log(err));
+        .catch(err =>
+            dispatch(returnErrors(err.response.data, err.response.status))
+        );
 };
 
 
@@ -42,14 +44,7 @@ export const addTodo = todo => dispatch => {
                 payload: res.data
             });
         })
-        .catch(err => {
-            const errors = {
-                msg: err.response.data,
-                status: err.response.status
-            };
-            dispatch({
-                type: GET_ERRORS,
-                payload: errors
-            });
-        });
+        .catch(err =>
+            dispatch(returnErrors(err.response.data, err.response.status))
+        );
 };
