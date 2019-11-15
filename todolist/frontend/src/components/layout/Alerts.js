@@ -17,7 +17,7 @@ export class Alerts extends Component {
             alert.error("this is error");*/ }
             if (error.msg.title) alert.error(`Başlık: ${error.msg.title.join()}`);
             if (error.msg.description) alert.error(`Açıklama: ${error.msg.description.join()}`);
-
+            if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join());
         }
 
         if (message !== prevProps.message) {
