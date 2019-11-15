@@ -47,10 +47,10 @@ export class Register extends Component {
         return (
             <div className="col-md-6 m-auto">
                 <div className="card card-body mt-5">
-                    <h2 className="text-center">Register</h2>
+                    <h2 className="text-center">Kayıt Ol</h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <label>Username</label>
+                            <label>Kullanıcı Adı</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -70,7 +70,7 @@ export class Register extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Password</label>
+                            <label>Şifre</label>
                             <input
                                 type="password"
                                 className="form-control"
@@ -80,7 +80,7 @@ export class Register extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Confirm Password</label>
+                            <label>Tekrar Şifre</label>
                             <input
                                 type="password"
                                 className="form-control"
@@ -91,11 +91,11 @@ export class Register extends Component {
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary">
-                                Register
+                                Kayıt
                   </button>
                         </div>
                         <p>
-                            Already have an account? <Link to="/login">Login</Link>
+                            <Link to="/login">Giriş</Link>
                         </p>
                     </form>
                 </div>

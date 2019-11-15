@@ -35,10 +35,10 @@ export class Login extends Component {
         return (
             <div className="col-md-6 m-auto">
                 <div className="card card-body mt-5">
-                    <h2 className="text-center">Login</h2>
+                    <h2 className="text-center">Giriş </h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <label>Username</label>
+                            <label>kullanıcı adi</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -49,7 +49,7 @@ export class Login extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label>Password</label>
+                            <label>Şifre</label>
                             <input
                                 type="password"
                                 className="form-control"
@@ -61,11 +61,11 @@ export class Login extends Component {
 
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary">
-                                Login
+                                Giriş
               </button>
                         </div>
                         <p>
-                            Don't have an account? <Link to="/register">Register</Link>
+                            <Link to="/register">Kayıt ol</Link>
                         </p>
                     </form>
                 </div>
