@@ -20,11 +20,19 @@ export class Register extends Component {
     onSubmit = e => {
         e.preventDefault();
         //this.props.login('this.state.username, this.state.password');
-        const { password, password2 } = this.state;
+        const { username, email, password, password2 } = this.state;
         if (password !== password2) {
             this.props.createMessage({ passwordNotMatch: "Parolalar eşleşmiyor" });
         } else {
-            console.log("Kayıt tamam");
+            //console.log("Kayıt tamam");
+            //yeni kullanıcı
+            const newUser = {
+                username,
+                password,
+                email
+            }
+            this.props.register(newUser);
+
         }
     };
 
