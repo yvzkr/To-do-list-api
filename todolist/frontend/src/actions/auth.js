@@ -97,7 +97,7 @@ export const logout = () => (dispatch, getState) => {
     if (token) {
         config.headers["Authorization"] = `Token ${token}`;
     }
-    axios.get("/api/auth/logout", null, config)
+    axios.post("/api/auth/logout/", null, config)
         .then(res => {
             dispatch({
                 type: LOGOUT_SUCCESS
