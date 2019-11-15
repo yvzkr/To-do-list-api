@@ -12,3 +12,17 @@ class Todos(models.Model):
 
     def _str_(self):
         return self.title
+
+class TodoItem(models.Model):
+
+
+    name = models.CharField(max_length=100)
+    content = models.TextField()
+    deadline_date = models.DateField(auto_now_add=True)
+    todos = models.ForeignKey(Todos,related_name="todoItem", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['deadline_date']
