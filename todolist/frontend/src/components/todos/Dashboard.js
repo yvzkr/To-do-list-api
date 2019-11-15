@@ -6,9 +6,10 @@ export class Dashboard extends Component {
     render() {
         return (
             <Fragment>
-                <Form/>
-                    
-                <Todos/>
+                <Form />
+
+                <Todos />
+
             </Fragment>
         )
     }
