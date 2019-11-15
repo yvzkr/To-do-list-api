@@ -1,12 +1,13 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import { GET_TODOS, DELETE_TODO, ADD_TODO } from "./types";
 
 //GET TODOS
-export const getTodos = () => dispatch => {
+export const getTodos = () => (dispatch, getState) => {
     axios
-        .get("/api/todos/")
+        .get("/api/todos/", tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: GET_TODOS,
@@ -20,9 +21,9 @@ export const getTodos = () => dispatch => {
 
 
 // DELETE TODO
-export const deleteTodo = id => dispatch => {
+export const deleteTodo = id => (dispatch, getState) => {
     axios
-        .delete(`/api/todos/${id}/`)
+        .delete(`/api/todos/${id}/`, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ deleteTodo: "İş Silindi" }));
             dispatch({
@@ -34,9 +35,9 @@ export const deleteTodo = id => dispatch => {
 };
 
 //Add TODO
-export const addTodo = todo => dispatch => {
+export const addTodo = todo => (dispatch, getState) => {
     axios
-        .post("/api/todos/", todo)
+        .post("/api/todos/", todo, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ addTodo: "İş eklendi" }));
             dispatch({
