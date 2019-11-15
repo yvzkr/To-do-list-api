@@ -66,6 +66,40 @@ export const login = (username, password) => dispatch => {
 
 };
 
+//2
+//REister user
+export const register = ({ username, password, email }) => dispatch => {
+    // header
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+
+    //Request Boody
+
+    const body = JSON.stringify({ username, email, password });
+
+
+    axios.post("/api/auth/register", body, config)
+        .then(res => {
+            dispatch({
+                type: REGISTER_SUCCESS,
+                payload: res.data
+            });
+        }).catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status));
+            dispatch({
+                type: REGISTER_FAIL
+            });
+        });
+
+
+};
+
+
+
+
 //log out user
 
 export const logout = () => (dispatch, getState) => {
@@ -107,3 +141,4 @@ export const tokenConfig = getState => {
 
     return config;
 }
+
