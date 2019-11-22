@@ -35,7 +35,7 @@ export const deleteTodo = id => (dispatch, getState) => {
 };
 
 //Add TODO
-export const addTodo = id => (dispatch, getState) => {
+export const addTodo = todo => (dispatch, getState) => {
     axios
         .post("/api/todos/", todo, tokenConfig(getState))
         .then(res => {
@@ -62,5 +62,7 @@ export const completeTodo = id => (dispatch, getState) => {
                 payload: res.data
             });
         })
-        .catch(err => console.log(err));
+        .catch(err =>
+            dispatch(returnErrors(err.response.data, err.response.status))
+        );
 };

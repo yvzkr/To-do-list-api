@@ -25,6 +25,7 @@ export class Alerts extends Component {
             if (message.deleteTodo) alert.success(message.deleteTodo);
             if (message.addTodo) alert.success(message.addTodo);
             if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
+            if (message.completeTodo) alert.success(message.completeTodo);
 
         }
 

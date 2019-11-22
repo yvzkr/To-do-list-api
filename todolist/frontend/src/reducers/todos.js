@@ -1,4 +1,4 @@
-import { GET_TODOS, DELETE_TODO, ADD_TODO } from '../actions/types.js';
+import { GET_TODOS, DELETE_TODO, ADD_TODO,COMPLETE_TODO } from '../actions/types.js';
 
 
 const initialState = {
