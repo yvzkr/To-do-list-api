@@ -49,3 +49,25 @@ def todoItemsList(request, todoId):
         return Response(status=status.HTTP_404_NOT_FOUND)
     serializer = TodoItemSerializer(items, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getItemOfTodo(request, **kwargs):
+    """
+    get item list
+    :param request:
+    :param kwargs:
+    :return:
+    """
+    todo_pk = kwargs["todo_pk"]
+    item_pk = kwargs["item_pk"]
+    try:
+        todo = Todos.objects.get(pk=todo_pk)
+        item = TodoItem.objects.get(pk=item_pk, todos=todo)
+    except Todos.DoesNotExist or TodoItem.DoesNotExist:
+        # Bu ide sahip veri yok ise 404 http kodunu göster
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = TodoItemSerializer(item)
+    return Response(serializer.data)
+
+
