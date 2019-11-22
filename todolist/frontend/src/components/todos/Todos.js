@@ -14,7 +14,13 @@ export class Todos extends Component {
     componentDidMount() {
         this.props.getTodos();
     }
+    renderElement(todo){
 
+       if(!todo.completed)
+          return <button className="btn btn-danger btn-sm">Tamamla</button>;
+       else
+          return <span>Tamamlandı</span>;
+    }
 
     render() {
         return (
@@ -37,7 +43,7 @@ export class Todos extends Component {
                                 <td>{todo.id}</td>
                                 <td>{todo.title}</td>
                                 <td>{todo.description}</td>
-                                <td>{todo.completed}</td>
+                                <td>{ this.renderElement(todo) }</td>
                                 <td>{todo.created_at}</td>
                                 <td><button onClick={this.props.deleteTodo.bind(this, todo.id)} className="btn btn-danger btn-sm">Sil</button></td>
 
