@@ -8,9 +8,9 @@ from rest_framework.decorators import api_view
 # Response : İstekleri istemciye geri gönderir.
 from rest_framework.response import Response
 # Sinnpet Modeli
-from .models import Todos
+from .models import Todos, TodoItem
 # Serializer.py'deki class'ımız bir önceki makalede anlattım.
-from .serializers import TodosSerializer
+from .serializers import TodosSerializer, TodoItemSerializer
 
 
 @api_view(['GET'])
@@ -33,3 +33,19 @@ def completed(request, pk):
         # json olarak yolla
         # return Response(status=status.HTTP_200_OK)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def todoItemsList(request, todoId):
+    """
+    This is the todoItem all list
+    """
+    try:
+        # Eğer gelen id veri tabanında var ise, değişkene depola
+        todo = Todos.objects.get(pk=todoId)
+        items = TodoItem.objects.filter(todos=todo)
+    except Todos.DoesNotExist or TodoItem.DoesNotExist:
+        # Bu ide sahip veri yok ise 404 http kodunu göster
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = TodoItemSerializer(items, many=True)
+    return Response(serializer.data)

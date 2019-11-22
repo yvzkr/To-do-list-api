@@ -20,6 +20,7 @@ router.register('api/todoItem', TodoItemViewSet, 'todoItem')
 urlpatterns = [
     # complete function
     url(r'^api/complete/(?P<pk>[0-9]+)$', views.completed),
+    url(r'^api/todoItemsList/(?P<todoId>[0-9]+)$', views.todoItemsList),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
