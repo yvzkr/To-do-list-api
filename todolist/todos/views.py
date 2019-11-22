@@ -32,6 +32,8 @@ def completed(request, pk):
         todo.save(update_fields=['completed'])
         # json olarak yolla
         # return Response(status=status.HTTP_200_OK)
+        todo = Todos.objects.all()
+        serializer = TodosSerializer(todo, many=True)
         return Response(serializer.data)
 
 

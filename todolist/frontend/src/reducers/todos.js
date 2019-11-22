@@ -1,4 +1,4 @@
-import { GET_TODOS, DELETE_TODO, ADD_TODO,COMPLETE_TODO } from '../actions/types.js';
+import { GET_TODOS, DELETE_TODO, ADD_TODO, COMPLETE_TODO } from '../actions/types.js';
 
 
 const initialState = {
@@ -23,6 +23,11 @@ export default function (state = initialState, action) {
                 ...state,
                 todos: [...state.todos, action.payload]
             };
+        case COMPLETE_TODO:
+            return{
+                ...state,
+                todos: action.payload
+            }
         default:
             return state;
     }
