@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTodos, deleteTodo } from '../../actions/todos';
+import { getTodos, deleteTodo, completeTodo } from '../../actions/todos';
 
 
 export class Todos extends Component {
     static propTypes = {
         todos: PropTypes.array.isRequired,
         getTodos: PropTypes.func.isRequired,
-        deleteTodo: PropTypes.func.isRequired
+        deleteTodo: PropTypes.func.isRequired,
+        completeTodo: PropTypes.func.isRequired
     }
 
     componentDidMount() {
@@ -17,7 +18,7 @@ export class Todos extends Component {
     renderElement(todo){
 
        if(!todo.completed)
-          return <button className="btn btn-danger btn-sm">Tamamla</button>;
+          return <button onClick={this.props.completeTodo.bind(this, todo.id)} className="btn btn-danger btn-sm">Tamamla</button>;
        else
           return <span>Tamamlandı</span>;
     }
@@ -64,5 +65,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getTodos, deleteTodo }
+    { getTodos, deleteTodo ,completeTodo}
 )(Todos);
