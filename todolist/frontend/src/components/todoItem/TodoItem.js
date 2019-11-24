@@ -1,14 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTodoItems } from '../../actions/todoItem';
+import { getTodoItems, deleteTodoItem } from '../../actions/todoItem';
 
 
 
 export class TodoItem extends Component {
 
     static propTypes = {
-        todo_items: PropTypes.array.isRequired
+        todo_items: PropTypes.array.isRequired,
+        getTodoItems: PropTypes.func.isRequired,
+        deleteTodoItem: PropTypes.func.isRequired
+
     }
 
     componentDidMount() {
@@ -44,7 +47,7 @@ export class TodoItem extends Component {
                                 </td>
                                 <td>{item.deadline_date}</td>
                                 <td>
-                                    <button className="btn btn-danger btn-sm">Sil</button>
+                                    <button onClick={this.props.deleteTodoItem.bind(this, item.id)} className="btn btn-danger btn-sm">Sil</button>
 
                                 </td>
 
@@ -64,5 +67,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getTodoItems}
+    { getTodoItems, deleteTodoItem}
 )(TodoItem);

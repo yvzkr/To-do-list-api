@@ -2,7 +2,7 @@ import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
 
-import { GET_TODO_ITEMS, ADD_TODO_ITEM } from "./types";
+import { GET_TODO_ITEMS, ADD_TODO_ITEM, DELETE_TODO_ITEM} from "./types";
 
 //GET TODOS Items
 export const getTodoItems = id => (dispatch, getState) => {
@@ -35,5 +35,18 @@ export const addTodoItem = todoItem => (dispatch, getState) => {
         );
 };
 
+// DELETE TODO
+export const deleteTodoItem = id => (dispatch, getState) => {
+    axios
+        .delete(`/api/todoItem/${id}/`, tokenConfig(getState))
+        .then(res => {
+            dispatch(createMessage({ deleteTodo: "İş silindi" }));
+            dispatch({
+                type: DELETE_TODO_ITEM,
+                payload: id
+            });
+        })
+        .catch(err => console.log(err));
+};
 
 
