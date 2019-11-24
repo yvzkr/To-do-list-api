@@ -21,3 +21,8 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 //1
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
+
+// todo item
+export const GET_TODO_ITEMS = "GET_TODO_ITEMS";
+export const ADD_TODO_ITEM = "ADD_TODO_ITEM";
+
