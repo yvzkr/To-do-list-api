@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTodos, deleteTodo, completeTodo } from '../../actions/todos';
 
+import { Link } from "react-router-dom";
+
 
 export class Todos extends Component {
     static propTypes = {
@@ -46,7 +48,10 @@ export class Todos extends Component {
                                 <td>{todo.description}</td>
                                 <td>{ this.renderElement(todo) }</td>
                                 <td>{todo.created_at}</td>
-                                <td><button onClick={this.props.deleteTodo.bind(this, todo.id)} className="btn btn-danger btn-sm">Sil</button></td>
+                                <td>
+                                <Link to={`/todoItem/${todo.id}`} className="btn btn-success btn-sm">Madde Ekle</Link>
+                                <button onClick={this.props.deleteTodo.bind(this, todo.id)} className="btn btn-danger btn-sm">Sil</button>
+                                </td>
 
                             </tr>
                         ))}
