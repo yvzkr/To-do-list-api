@@ -15,12 +15,14 @@ router.register('api/todos', TodosViewSet, 'todos')
 router.register('api/todoItem', TodoItemViewSet, 'todoItem')
 
 urlpatterns = [
-    # complete function
+    # complete todo function
     url(r'^api/complete/(?P<pk>[0-9]+)$', views.completed),
     # list items of the todo
     url(r'^api/todoItemsList/(?P<todoId>[0-9]+)$', views.todoItemsList),
     # list item
     path("api/todoItemList/<int:todo_pk>/<int:item_pk>/", views.getItemOfTodo),
+    # complete todo function
+    url(r'^api/completeItem/(?P<pk>[0-9]+)$', views.completedTodoItem),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -26,4 +26,5 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_TODO_ITEMS = "GET_TODO_ITEMS";
 export const ADD_TODO_ITEM = "ADD_TODO_ITEM";
 export const DELETE_TODO_ITEM = "DELETE_TODO_ITEM";
+export const COMPLETE_TODO_ITEM = "COMPLETE_TODO_ITEM";
 

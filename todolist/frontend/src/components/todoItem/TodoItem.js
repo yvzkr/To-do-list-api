@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTodoItems, deleteTodoItem } from '../../actions/todoItem';
+import { getTodoItems, deleteTodoItem, completeTodoItem } from '../../actions/todoItem';
 
 
 
@@ -10,14 +10,22 @@ export class TodoItem extends Component {
     static propTypes = {
         todo_items: PropTypes.array.isRequired,
         getTodoItems: PropTypes.func.isRequired,
-        deleteTodoItem: PropTypes.func.isRequired
-
+        deleteTodoItem: PropTypes.func.isRequired,
+        completeTodoItem: PropTypes.func.isRequired
     }
 
     componentDidMount() {
         "console.log(this.props.value)"
         "const { todoid } = this.props.match.params"
         this.props.getTodoItems(this.props.value);
+    }
+
+    renderElement(item){
+
+       if(!item.completed)
+          return <button onClick={this.props.completeTodoItem.bind(this, item.id)} className="btn btn-danger btn-sm">Tamamla</button>;
+       else
+          return <span>Tamamlandı</span>;
     }
 
     render() {
@@ -43,7 +51,7 @@ export class TodoItem extends Component {
                                 <td>{item.name}</td>
                                 <td>{item.content}</td>
                                 <td>
-
+                                    { this.renderElement(item) }
                                 </td>
                                 <td>{item.deadline_date}</td>
                                 <td>
@@ -67,5 +75,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getTodoItems, deleteTodoItem}
+    { getTodoItems, deleteTodoItem, completeTodoItem}
 )(TodoItem);

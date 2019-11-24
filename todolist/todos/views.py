@@ -72,4 +72,26 @@ def getItemOfTodo(request, **kwargs):
     serializer = TodoItemSerializer(item)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def completedTodoItem(request, pk):
+    """
+    This is the completed process.
+    """
+    try:
+        # Eğer gelen id veri tabanında var ise, değişkene depola
+        todoItem = TodoItem.objects.get(pk=pk)
+    except todoItem.DoesNotExist:
+        # Bu ide sahip veri yok ise 404 http kodunu göster
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    # Get isteği gelirse
+    if request.method == 'GET':
+        # Aranan id'deki veriyi depola
+        serializer = TodosSerializer(todoItem)
+        todoItem.completed = True
+        todoItem.save(update_fields=['completed'])
+        # json olarak yolla
+        # return Response(status=status.HTTP_200_OK)
+        todoItems = TodoItem.objects.filter(todos=todoItem.todos)
+        serializer = TodoItemSerializer(todoItems, many=True)
+        return Response(serializer.data)
 

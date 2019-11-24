@@ -1,4 +1,4 @@
-import { GET_TODO_ITEMS, ADD_TODO_ITEM, DELETE_TODO_ITEM} from '../actions/types.js';
+import { GET_TODO_ITEMS, ADD_TODO_ITEM, DELETE_TODO_ITEM, COMPLETE_TODO_ITEM} from '../actions/types.js';
 
 
 const initialState = {
@@ -23,6 +23,11 @@ export default function (state = initialState, action) {
                 ...state,
                 todo_items: state.todo_items.filter(item => item.id !== action.payload)
             };
+        case COMPLETE_TODO_ITEM:
+            return{
+                ...state,
+                todo_items: action.payload
+            }
         default:
             return state;
     }
