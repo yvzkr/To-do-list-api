@@ -4,7 +4,7 @@ import { tokenConfig } from "./auth";
 
 import { GET_TODO_ITEMS, ADD_TODO_ITEM } from "./types";
 
-//GET TODOS
+//GET TODOS Items
 export const getTodoItems = id => (dispatch, getState) => {
     axios
         .get(`/api/todoItemsList/${id}`, tokenConfig(getState))
@@ -19,10 +19,10 @@ export const getTodoItems = id => (dispatch, getState) => {
         );
 };
 
-//Add TODO
+//Add TODOItem
 export const addTodoItem = todoItem => (dispatch, getState) => {
     axios
-        .post("/api/todos/", todoItem, tokenConfig(getState))
+        .post("/api/todoItem/", todoItem, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ addTodoItem: "İş eklendi" }));
             dispatch({

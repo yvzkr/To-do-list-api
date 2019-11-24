@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^api/complete/(?P<pk>[0-9]+)$', views.completed),
     # list items of the todo
     url(r'^api/todoItemsList/(?P<todoId>[0-9]+)$', views.todoItemsList),
-    # list
+    # list item
     path("api/todoItemList/<int:todo_pk>/<int:item_pk>/", views.getItemOfTodo),
 ]
 

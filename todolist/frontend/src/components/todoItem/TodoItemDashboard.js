@@ -13,7 +13,7 @@ export class TodoItemDashboard extends Component {
     render() {
         return (
             <Fragment>
-                <Form />
+                <Form value={this.state.todoItem} />
 
                 <TodoItem value={this.state.todoItem}/>
 

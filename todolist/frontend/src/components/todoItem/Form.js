@@ -8,7 +8,7 @@ export class Form extends Component {
     state = {
         name: '',
         content: '',
-        deadline_date: ''
+        todos: this.props.value
     }
 
     static propTypes = {
@@ -20,13 +20,13 @@ export class Form extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const { name, content,deadline_date } = this.state;
-        const todo = { name, content,deadline_date };
+        const { name, content,deadline_date,todos} = this.state;
+        const todo_item = { name, content, todos};
         this.props.addTodoItem(todo_item);
         this.setState({
             name: "",
             content: "",
-            deadline_date: ""
+            todos: this.props.value
         });
     };
 
