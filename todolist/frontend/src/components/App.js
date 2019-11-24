@@ -21,6 +21,9 @@ import { loadUser } from "../actions/auth";
 import { Provider } from "react-redux";
 import store from "../store";
 
+
+import TodoItemDashboard from "./todoItem/TodoItemDashboard";
+
 // Alert Options 
 const alertOptions = {
     timeout: 3000,
@@ -47,6 +50,7 @@ class App extends Component {
                                     <PrivateRoute exact path="/" component={Dashboard} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />
+                                    <Route exact path="/todoItem/:todoid" component={TodoItemDashboard} />
 
                                 </Switch>
                             </div>
