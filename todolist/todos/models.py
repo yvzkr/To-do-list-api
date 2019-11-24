@@ -19,6 +19,7 @@ class TodoItem(models.Model):
     name = models.CharField(max_length=100)
     content = models.TextField()
     deadline_date = models.DateField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
     todos = models.ForeignKey(Todos, related_name="todoItem", on_delete=models.CASCADE)
 
     def __str__(self):
